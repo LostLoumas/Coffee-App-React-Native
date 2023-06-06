@@ -9,6 +9,10 @@ import { themeColors } from '../theme';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {HomeIcon as HomeOutline, HeartIcon as HeartOutline, ShoppingBagIcon as BagOutline } from 'react-native-heroicons/outline';
 import {HomeIcon as HomeSolid, HeartIcon as HeartSolid, ShoppingBagIcon as BagSolid} from 'react-native-heroicons/solid';
+import Favorite from '../screens/Favorite';
+import Orders from '../screens/Orders';
+import Profile from '../screens/Profile';
+import Notification from '../screens/Notification';
 
 
 const Stack = createNativeStackNavigator();
@@ -26,6 +30,10 @@ export default function AppNavigation() {
       }}>
         <Stack.Screen name="Home" options={{headerShown: false}} component={HomeTabs} />
         <Stack.Screen name="Product" options={{headerShown: false}} component={ProductScreen} />
+        <Stack.Screen name="Profile" options={{headerShown: false}} component={Profile} />
+        <Stack.Screen name="Notification" options={{headerShown: false}} component={Notification} />
+
+
       </Stack.Navigator>
     </NavigationContainer>
   )
@@ -56,8 +64,8 @@ function HomeTabs(){
       
       >
       <Tab.Screen name="home" component={HomeScreen} />
-      <Tab.Screen name="favourite" component={HomeScreen} />
-      <Tab.Screen name="cart" component={HomeScreen} />
+      <Tab.Screen name="favourite" component={Favorite} />
+      <Tab.Screen name="cart" component={Orders} />
     </Tab.Navigator>
   )
 }
