@@ -13,6 +13,7 @@ import Favorite from '../screens/Favorite';
 import Orders from '../screens/Orders';
 import Profile from '../screens/Profile';
 import Notification from '../screens/Notification';
+import Payment from '../screens/Payment';
 
 
 const Stack = createNativeStackNavigator();
@@ -32,8 +33,9 @@ export default function AppNavigation() {
         <Stack.Screen name="Product" options={{headerShown: false}} component={ProductScreen} />
         <Stack.Screen name="Profile" options={{headerShown: false}} component={Profile} />
         <Stack.Screen name="Notification" options={{headerShown: false}} component={Notification} />
-
-
+        <Stack.Screen name="Payment" options={{headerShown: false}} component={Payment} />
+        <Stack.Screen name="Orders" options={{headerShown: false}} component={Orders} />
+      
       </Stack.Navigator>
     </NavigationContainer>
   )
@@ -69,6 +71,8 @@ function HomeTabs(){
     </Tab.Navigator>
   )
 }
+
+
 
 const menuIcons = (route, focused)=> {
   let icon;
