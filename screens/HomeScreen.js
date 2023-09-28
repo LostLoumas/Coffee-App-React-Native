@@ -3,11 +3,12 @@ import { View, Text, Image, TouchableOpacity, TextInput, FlatList, Dimensions, P
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { themeColors } from '../theme';
 import { StatusBar } from 'expo-status-bar';
-import { categories, coffeeItems } from '../constants';
+import { categories, coffeeItems, restaurants,promotionItems } from '../constants';
 import Carousel from 'react-native-snap-carousel';
 import CoffeeCard from '../components/coffeeCard';
 import { BellIcon, MagnifyingGlassIcon } from 'react-native-heroicons/outline';
 import { MapPinIcon } from 'react-native-heroicons/solid';
+import RestaurantCard from '../components/RestaurantCard';
 import Profile from './Profile';
 
 const { width, height } = Dimensions.get('window');
@@ -16,17 +17,22 @@ const ios = Platform.OS == 'ios';
 export default function HomeScreen({ navigation }) {
   const [activeCategory, setActiveCategory] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
-  const [filteredCoffeeItems, setFilteredCoffeeItems] = useState(coffeeItems);
+  const [filteredCoffeeItems, setFilteredCoffeeItems] = useState(restaurants, promotionItems);
 
   const handleCategorySelect = (categoryId) => {
     setActiveCategory(categoryId);
-
-    const filteredItems = coffeeItems.filter((item) => item.categoryId === categoryId);
-    setFilteredCoffeeItems(filteredItems);
+  
+    if (categoryId === 1) { // Assuming categoryId 1 represents all categories
+      setFilteredCoffeeItems([...restaurants, ...promotionItems]);
+    } else {
+      const filteredItems = [...restaurants, ...promotionItems].filter((item) => item.categoryId === categoryId);
+      setFilteredCoffeeItems(filteredItems);
+    }
   };
+  
 
   const handleSearch = () => {
-    const filteredItems = coffeeItems.filter((item) => {
+    const filteredItems = restaurants && promotionItems.filter((item) => {
       if (item.name && typeof item.name === 'string') {
         return item.name.toLowerCase().includes(searchQuery.toLowerCase());
       }
@@ -114,7 +120,7 @@ export default function HomeScreen({ navigation }) {
           <Carousel
             containerCustomStyle={{ overflow: 'visible' }}
             data={filteredCoffeeItems}
-            renderItem={({ item }) => <CoffeeCard item={item} />}
+            renderItem={({ item }) => <RestaurantCard item={item} />}
             firstItem={1}
             loop={true}
             inactiveSlideScale={0.75}

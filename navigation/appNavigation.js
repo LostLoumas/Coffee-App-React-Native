@@ -14,7 +14,14 @@ import Orders from '../screens/Orders';
 import Profile from '../screens/Profile';
 import Notification from '../screens/Notification';
 import Payment from '../screens/Payment';
-
+import Login from '../screens/Auth/Login';
+import Resetpassword from '../screens/Auth/ResetPassword';
+import Register from '../screens/Auth/Register';
+import RegisterBusiness from '../screens/Auth/RegisterBusiness';
+import RestaurantScreen from '../screens/RestaurantScreen';
+import Booking from '../screens/Booking'
+import QrScan from '../screens/QrScan';
+import Table from '../screens/Table';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -28,14 +35,24 @@ export default function AppNavigation() {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{
         contentStyle: {backgroundColor: 'white'}
-      }}>
+      }}>     
+        <Stack.Screen name="Login" options={{headerShown: false}} component={Login} />
+        <Stack.Screen name="Register" options={{headerShown: false}} component={Register} />
+        <Stack.Screen name="RegisterBusiness" options={{headerShown: false}} component={RegisterBusiness} />       
+        <Stack.Screen name="Resetpassword" options={{headerShown: false}} component={Resetpassword} />
         <Stack.Screen name="Home" options={{headerShown: false}} component={HomeTabs} />
         <Stack.Screen name="Product" options={{headerShown: false}} component={ProductScreen} />
         <Stack.Screen name="Profile" options={{headerShown: false}} component={Profile} />
         <Stack.Screen name="Notification" options={{headerShown: false}} component={Notification} />
         <Stack.Screen name="Payment" options={{headerShown: false}} component={Payment} />
         <Stack.Screen name="Orders" options={{headerShown: false}} component={Orders} />
-      
+        <Stack.Screen name="Restaurant" options={{headerShown: false}} component={RestaurantScreen} />
+        <Stack.Screen name="Booking" options={{headerShown: false}} component={Booking} />
+        <Stack.Screen name="QrScan" options={{headerShown: false}} component={QrScan} />
+        <Stack.Screen name="Table" options={{headerShown: false}} component={Table} />     
+
+
+
       </Stack.Navigator>
     </NavigationContainer>
   )
