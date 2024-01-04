@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import { View, Text, Dimensions } from 'react-native';
-import { FavoriteContext } from '../navigation/FavoriteContex';
+import { FavoriteContext } from '../../navigation/FavoriteContex';
 import Carousel from 'react-native-snap-carousel';
-import CoffeeCard from '../components/coffeeCard';
-
+import CoffeeCard from '../../components/coffeeCard';
+import FavoriteCard from '../../components/FavoriteCard'
 const { width, height } = Dimensions.get('window');
 const ios = Platform.OS == 'ios';
 
@@ -19,11 +19,11 @@ export default function FavoriteScreen() {
   }
 
   return (
-    <View style={`overflow-visible flex justify-center flex-1 ${ios ? 'mt-10' : ''}`}>
+    <View style={{marginTop:'50%'}}>
       <Carousel
         containerCustomStyle={{ overflow: 'visible' }}
         data={favoriteItems}
-        renderItem={({ item }) => <CoffeeCard item={item} />}
+        renderItem={({ item }) => <FavoriteCard item={item} />}
         firstItem={1}
         loop={true}
         inactiveSlideScale={0.75}

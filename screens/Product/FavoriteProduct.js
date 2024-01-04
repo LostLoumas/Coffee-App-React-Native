@@ -5,9 +5,10 @@ import { StatusBar } from 'expo-status-bar';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ArrowLeftCircleIcon, MinusIcon, PlusIcon } from 'react-native-heroicons/outline';
 import { HeartIcon, StarIcon } from 'react-native-heroicons/solid';
-import { themeColors } from '../theme';
-import { ShoppingBag } from 'react-native-feather';
-import { FavoriteContext } from '../navigation/FavoriteContex';
+import { themeColors } from '../../theme';
+import { FavoriteContext } from '../../navigation/FavoriteContex';
+import { AntDesign } from '@expo/vector-icons';
+
 
 
 const { width, height } = Dimensions.get('window');
@@ -33,7 +34,7 @@ export default function FavouriteScreen(props) {
     <View className="flex-1">
       <StatusBar style="light" />
       <Image
-        source={require('../assets/images/beansBackground2.png')}
+        source={require('../../assets/images/beansBackground2.png')}
         style={{ height: 300, borderBottomLeftRadius: 50, borderBottomRightRadius: 50 }}
         className="w-full absolute"
       />
@@ -68,88 +69,35 @@ export default function FavouriteScreen(props) {
           <StarIcon size="15" color="white" />
           <Text className="text-base font-semibold text-white">{item.stars}</Text>
         </View>
+
+
         <View className="px-4 flex-row justify-between items-center">
           <Text style={{ color: themeColors.text }} className="text-3xl font-semibold">
             {item.name}
           </Text>
-          <Text style={{ color: themeColors.text }} className="text-lg font-semibold">
-            {item.price * selectedQuantity} Kz
-          </Text>
-        </View>
-        <View className="px-4 space-y-2">
-          <Text style={{ color: themeColors.text }} className="text-lg font-bold">
-            Tamanho
-          </Text>
-          <View className="flex-row justify-between">
-            <TouchableOpacity
-              onPress={() => setSize('Pequeno')}
-              style={{ backgroundColor: size == 'Pequeno' ? themeColors.bgLight : 'rgba(0,0,0,0.07)' }}
-              className="p-3 px-8 rounded-full"
-            >
-              <Text className={size == 'Pequeno' ? 'text-white' : 'text-gray-700'}>Pequeno</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => setSize('Medio')}
-              style={{ backgroundColor: size == 'Medio' ? themeColors.bgLight : 'rgba(0,0,0,0.07)' }}
-              className="p-3 px-8 rounded-full"
-            >
-              <Text className={size == 'Medio' ? 'text-white' : 'text-gray-700'}>Medio</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => setSize('Grande')}
-              style={{ backgroundColor: size == 'Grande' ? themeColors.bgLight : 'rgba(0,0,0,0.07)' }}
-              className="p-3 px-8 rounded-full"
-            >
-              <Text className={size == 'Grande' ? 'text-white' : 'text-gray-700'}>Grande</Text>
-            </TouchableOpacity>
-          </View>
         </View>
 
         <View className="px-4 space-y-2">
           <Text style={{ color: themeColors.text }} className="text-lg font-bold">
             Descricao
           </Text>
-          <Text className="text-gray-600">{item.desc}</Text>
+          <Text className="text-gray-600">{item.description}</Text>
         </View>
       </SafeAreaView>
-      <View className={`space-y-3 ${ios ? 'mb-6' : 'mb-3'}`}>
-        <View className="flex-row justify-between items-center px-4 mb-2">
-          <View className="flex-row items-center space-x-1">
-            <Text className="text-base text-gray-700 font-semibold opacity-60">Volume</Text>
-            <Text className="text-base text-black font-semibold"> {item.volume}</Text>
-          </View>
-          <View className="flex-row items-center space-x-4 border-gray-500 border rounded-full p-1 px-4">
-            <TouchableOpacity onPress={() => setSelectedQuantity(selectedQuantity - 1)}>
-              <MinusIcon size="20" strokeWidth={3} color={themeColors.text} />
-            </TouchableOpacity>
-            <Text style={{ color: themeColors.text }} className="font-extrabold text-lg">
-              {selectedQuantity}
-            </Text>
-            <TouchableOpacity onPress={() => setSelectedQuantity(selectedQuantity + 1)}>
-              <PlusIcon size="20" strokeWidth={3} color={themeColors.text} />
-            </TouchableOpacity>
-          </View>
-        </View>
 
+      <View className={`space-y-3 ${ios ? 'mb-6' : 'mb-3'}`}>
         {/* buy now button */}
         <View className="flex-row justify-between px-4">
-          <TouchableOpacity className="p-4 rounded-full border border-gray-400" onPress={() => navigation.navigate('Orders')}>
-            <ShoppingBag size="30" color="gray" />
+          <TouchableOpacity className="p-4 rounded-full border border-gray-400" onPress={() => navigation.navigate('QrScan')}>
+          <AntDesign name="qrcode" size={24} color="black" />
           </TouchableOpacity>
           <TouchableOpacity
           onPress={() =>
-            navigation.navigate('Payment', {
-              name: item.name,
-              size: size,
-              price: item.price * selectedQuantity,
-              quantity: selectedQuantity,
-              image: item.image
-            })
-          }
+            navigation.navigate('Booking')}
             style={{ backgroundColor: themeColors.bgLight }}
             className="p-4 rounded-full flex-1 ml-4"
           >
-            <Text className="text-center text-white text-base font-semibold">Pagar</Text>
+            <Text className="text-center text-white text-base font-semibold">Reservar Mesa</Text>
           </TouchableOpacity>
         </View>
       </View>

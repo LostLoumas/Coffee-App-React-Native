@@ -2,6 +2,7 @@ import { StyleSheet, Text, View, SafeAreaView, FlatList, TouchableOpacity, Image
 import React from 'react';
 
 const Notification = ({ navigation }) => {
+
   const notifications = [
     {
       id: 1,
@@ -68,6 +69,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 16,
     color: '#333',
+    padding:10
+
   },
   notificationItem: {
     backgroundColor: '#FFF',

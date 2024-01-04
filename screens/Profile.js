@@ -1,11 +1,13 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useNavigation } from '@react-navigation/native';
 
 const ProfileScreen = () => {
   const handleEditProfile = () => {
     // Handle edit profile action
   };
+  const navigation = useNavigation();
 
   return (
     <SafeAreaView style={styles.container}>
@@ -28,7 +30,13 @@ const ProfileScreen = () => {
         <ProfileSection title="Email">
           <Text style={styles.sectionContent}>johndoe@example.com</Text>
         </ProfileSection>
-      </View>
+
+        </View>
+        <>
+        <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+          <Text style={styles.logout}>LogOut</Text>
+        </TouchableOpacity>
+        </>
     </SafeAreaView>
   );
 };
@@ -92,6 +100,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#555555',
   },
+  logout:{
+    color:'red',
+    fontSize: 16,
+    justifyContent:'center',
+    alignSelf:'center'
+
+  }
 });
 
 export default ProfileScreen;

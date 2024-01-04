@@ -229,6 +229,7 @@ export const promotionItems = [
   price: 6.99,
   categoryId: 2,
   stars: '4.6', 
+  description:'delicious food, try it out'
 
 },
 {
@@ -238,6 +239,8 @@ export const promotionItems = [
  price: 5.99,
  categoryId: 2,
  stars: '4.6', 
+ description:'delicious food, try it out'
+
 
 },
 {
@@ -247,7 +250,7 @@ export const promotionItems = [
   price: 6.99,
   categoryId: 2,
   stars: '4.6', 
-
+  description:'delicious food, try it out'
 }
 ];
 

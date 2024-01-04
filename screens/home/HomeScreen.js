@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
 import { View, Text, Image, TouchableOpacity, TextInput, FlatList, Dimensions, Platform } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { themeColors } from '../theme';
+import { themeColors } from '../../theme';
 import { StatusBar } from 'expo-status-bar';
-import { categories, coffeeItems, restaurants,promotionItems } from '../constants';
+import { categories, coffeeItems, restaurants,promotionItems } from '../../constants';
 import Carousel from 'react-native-snap-carousel';
-import CoffeeCard from '../components/coffeeCard';
 import { BellIcon, MagnifyingGlassIcon } from 'react-native-heroicons/outline';
 import { MapPinIcon } from 'react-native-heroicons/solid';
-import RestaurantCard from '../components/RestaurantCard';
-import Profile from './Profile';
+import RestaurantCard from '../../components/RestaurantCard';
+
 
 const { width, height } = Dimensions.get('window');
 const ios = Platform.OS == 'ios';
 
 export default function HomeScreen({ navigation }) {
+
   const [activeCategory, setActiveCategory] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredCoffeeItems, setFilteredCoffeeItems] = useState(restaurants, promotionItems);
@@ -46,14 +46,14 @@ export default function HomeScreen({ navigation }) {
       <StatusBar />
 
       <Image 
-        source={require('../assets/images/beansBackground1.png')} 
+        source={require('../../assets/images/beansBackground1.png')} 
         style={{ height: height * 0.2 }} 
         className="w-full absolute -top-5 opacity-10" />
       <SafeAreaView className={ios ? '-mb-8' : ''}>
         {/* avatar and bell icon */}
         <View className="mx-4 flex-row justify-between items-center">
           <TouchableOpacity onPress={()=>navigation.navigate('Profile')}>
-            <Image source={require('../assets/images/avatar.png')} className="h-9 w-9 rounded-full" />
+            <Image source={require('../../assets/images/avatar.png')} className="h-9 w-9 rounded-full" />
           </TouchableOpacity>
 
           <View className="flex-row items-center space-x-2">

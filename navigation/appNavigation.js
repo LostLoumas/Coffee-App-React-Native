@@ -1,15 +1,16 @@
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import HomeScreen from '../screens/HomeScreen';
+import HomeScreen from '../screens/home/HomeScreen';
 import { Dimensions, LogBox, Platform, Text, View } from 'react-native';
-import ProductScreen from '../screens/ProductScreen';
+import ProductScreen from '../screens/Product/ProductScreen';
 import { themeColors } from '../theme';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {HomeIcon as HomeOutline, HeartIcon as HeartOutline, ShoppingBagIcon as BagOutline } from 'react-native-heroicons/outline';
 import {HomeIcon as HomeSolid, HeartIcon as HeartSolid, ShoppingBagIcon as BagSolid} from 'react-native-heroicons/solid';
 import Favorite from '../screens/Favorite';
+import FavoriteProduct from '../screens/Product/FavoriteProduct'
 import Orders from '../screens/Orders';
 import Profile from '../screens/Profile';
 import Notification from '../screens/Notification';
@@ -19,7 +20,7 @@ import Resetpassword from '../screens/Auth/ResetPassword';
 import Register from '../screens/Auth/Register';
 import RegisterBusiness from '../screens/Auth/RegisterBusiness';
 import RestaurantScreen from '../screens/RestaurantScreen';
-import Booking from '../screens/Booking'
+import Booking from '../screens/booking/Booking'
 import QrScan from '../screens/QrScan';
 import Table from '../screens/Table';
 
@@ -35,7 +36,8 @@ export default function AppNavigation() {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{
         contentStyle: {backgroundColor: 'white'}
-      }}>     
+      }}> 
+
         <Stack.Screen name="Login" options={{headerShown: false}} component={Login} />
         <Stack.Screen name="Register" options={{headerShown: false}} component={Register} />
         <Stack.Screen name="RegisterBusiness" options={{headerShown: false}} component={RegisterBusiness} />       
@@ -49,9 +51,8 @@ export default function AppNavigation() {
         <Stack.Screen name="Restaurant" options={{headerShown: false}} component={RestaurantScreen} />
         <Stack.Screen name="Booking" options={{headerShown: false}} component={Booking} />
         <Stack.Screen name="QrScan" options={{headerShown: false}} component={QrScan} />
-        <Stack.Screen name="Table" options={{headerShown: false}} component={Table} />     
-
-
+        <Stack.Screen name="Table" options={{headerShown: false}} component={Table} />
+        <Stack.Screen name="FavoriteProduct" options={{headerShown: false}} component={FavoriteProduct} />     
 
       </Stack.Navigator>
     </NavigationContainer>
