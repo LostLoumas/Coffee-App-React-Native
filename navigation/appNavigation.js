@@ -9,7 +9,7 @@ import { themeColors } from '../theme';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {HomeIcon as HomeOutline, HeartIcon as HeartOutline, ShoppingBagIcon as BagOutline } from 'react-native-heroicons/outline';
 import {HomeIcon as HomeSolid, HeartIcon as HeartSolid, ShoppingBagIcon as BagSolid} from 'react-native-heroicons/solid';
-import Favorite from '../screens/Favorite';
+import Favorite from '../screens/Favorite/Favorite';
 import FavoriteProduct from '../screens/Product/FavoriteProduct'
 import Orders from '../screens/Orders';
 import Profile from '../screens/Profile';
@@ -20,7 +20,7 @@ import Resetpassword from '../screens/Auth/ResetPassword';
 import Register from '../screens/Auth/Register';
 import RegisterBusiness from '../screens/Auth/RegisterBusiness';
 import RestaurantScreen from '../screens/RestaurantScreen';
-import Booking from '../screens/booking/Booking'
+import Booking from '../screens/booking/Booking';
 import QrScan from '../screens/QrScan';
 import Table from '../screens/Table';
 

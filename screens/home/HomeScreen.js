@@ -11,6 +11,7 @@ import RestaurantCard from '../../components/RestaurantCard';
 
 
 const { width, height } = Dimensions.get('window');
+
 const ios = Platform.OS == 'ios';
 
 export default function HomeScreen({ navigation }) {
